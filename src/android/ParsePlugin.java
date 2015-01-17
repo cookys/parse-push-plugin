@@ -86,7 +86,9 @@ public class ParsePlugin extends CordovaPlugin {
         cordova.getThreadPool().execute(new Runnable() {
             public void run() {
                 String installationId = ParseInstallation.getCurrentInstallation().getInstallationId();
-                callbackContext.success(installationId);
+				if( installationId == null)
+					callbackContext.success("");
+				else callbackContext.success(installationId);
             }
         });
     }
@@ -95,6 +97,9 @@ public class ParsePlugin extends CordovaPlugin {
         cordova.getThreadPool().execute(new Runnable() {
             public void run() {
                 String objectId = ParseInstallation.getCurrentInstallation().getObjectId();
+				if( objectId == null )
+					callbackContext.success("");
+				else
                 callbackContext.success(objectId);
             }
         });
@@ -102,9 +107,12 @@ public class ParsePlugin extends CordovaPlugin {
 
     private void getSubscriptions(final CallbackContext callbackContext) {
         cordova.getThreadPool().execute(new Runnable() {
-            public void run() {
+            public void run() {            	
             	List<String> subscriptions = ParseInstallation.getCurrentInstallation().getList("channels");
-                callbackContext.success(subscriptions.toString());
+            	if( subscriptions == null )
+					callbackContext.success("");
+				else 
+					callbackContext.success(subscriptions.toString());            	
             }
         });
     }
