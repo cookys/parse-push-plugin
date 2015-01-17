@@ -118,13 +118,21 @@ public class ParsePlugin extends CordovaPlugin {
     }
 
     private void subscribe(final String channel, final CallbackContext callbackContext) {
-    	ParsePush.subscribeInBackground(channel);
-        callbackContext.success();
+		cordova.getThreadPool().execute(new Runnable() {
+			public void run() {            	
+				ParsePush.subscribeInBackground(channel);
+				callbackContext.success();
+			}
+		});
     }
 
     private void unsubscribe(final String channel, final CallbackContext callbackContext) {
-    	ParsePush.unsubscribeInBackground(channel);
-        callbackContext.success();
+		cordova.getThreadPool().execute(new Runnable() {
+			public void run() {            	
+				ParsePush.unsubscribeInBackground(channel);
+				callbackContext.success();
+			}
+		});
     }
     
     /*
