@@ -1117,7 +1117,7 @@
         </member>
         <member name="F:Parse.ParseException.ErrorCode.RequestLimitExceeded">
             <summary>
-            Error code indicating that the application has exceeded its analytics request limit.
+            Error code indicating that the application has exceeded its request limit.
             </summary>
         </member>
         <member name="F:Parse.ParseException.ErrorCode.InvalidEventName">

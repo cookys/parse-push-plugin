@@ -18,19 +18,19 @@
         </config-file>
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
           <service android:name="com.parse.PushService" />
-          <receiver android:exported="false" android:name="org.apache.cordova.core.ParsePluginReceiver">
-            <intent-filter>
-                <action android:name="com.parse.push.intent.RECEIVE" />
-                <action android:name="com.parse.push.intent.DELETE" />
-                <action android:name="com.parse.push.intent.OPEN" />
-            </intent-filter>
-          </receiver>
           <receiver android:name="com.parse.GcmBroadcastReceiver"
               android:permission="com.google.android.c2dm.permission.SEND">
             <intent-filter>
               <action android:name="com.google.android.c2dm.intent.RECEIVE" />
               <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
               <category android:name="$PACKAGE_NAME" />
+            </intent-filter>
+          </receiver>
+		  <receiver android:exported="false" android:name="org.apache.cordova.core.ParsePluginReceiver">
+            <intent-filter>
+                <action android:name="com.parse.push.intent.RECEIVE" />
+                <action android:name="com.parse.push.intent.DELETE" />
+                <action android:name="com.parse.push.intent.OPEN" />
             </intent-filter>
           </receiver>
         </config-file>
@@ -45,9 +45,9 @@
           <uses-permission android:name="$PACKAGE_NAME.permission.C2D_MESSAGE" />
         </config-file>
 
-        <source-file src="src/android/parse/Parse-1.8.0.jar" target-dir="libs" framework="true" />
+        <source-file src="src/android/parse/Parse-1.8.2.jar" target-dir="libs" framework="true" />
         <source-file src="src/android/parse/bolts-android-1.1.4.jar" target-dir="libs" framework="true" />
-        <source-file src="src/android/parse/ParseCrashReporting-1.8.0.jar" target-dir="libs" framework="true" />
+        <source-file src="src/android/parse/ParseCrashReporting-1.8.2.jar" target-dir="libs" framework="true" />
         <source-file src="src/android/ParsePlugin.java" target-dir="src/org/apache/cordova/core" />
         <source-file src="src/android/ParsePluginReceiver.java" target-dir="src/org/apache/cordova/core" />      
      </platform>
@@ -80,6 +80,7 @@
         <framework src="src/ios/Frameworks/Parse.framework" custom="true" />
         <framework src="src/ios/Frameworks/ParseUI.framework" custom="true" />
         <framework src="src/ios/Frameworks/Bolts.framework" custom="true" />
+
     </platform>
 	<!-- window phone 8 -->
 	<platform name="wp8">
