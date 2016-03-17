@@ -19,19 +19,26 @@
  *
  */
 
+#import <Availability.h>
+#import <TargetConditionals.h>
+
 #ifndef ParseUI_ParseUIConstants_h
 #define ParseUI_ParseUIConstants_h
 
+///--------------------------------------
+/// @name Deprecated Macros
+///--------------------------------------
+
 #ifndef PARSE_UI_DEPRECATED
-    #ifdef __deprecated_msg
-        #define PARSE_UI_DEPRECATED(_MSG) (deprecated(_MSG))
-    #else
-        #ifdef __deprecated
-            #define PARSE_UI_DEPRECATED(_MSG) (deprecated)
-        #else
-            #define PARSE_UI_DEPRECATED(_MSG)
-        #endif
-    #endif
+#  ifdef __deprecated_msg
+#    define PARSE_UI_DEPRECATED(_MSG) (deprecated(_MSG))
+#  else
+#    ifdef __deprecated
+#      define PARSE_UI_DEPRECATED(_MSG) (deprecated)
+#    else
+#      define PARSE_UI_DEPRECATED(_MSG)
+#    endif
+#  endif
 #endif
 
 #endif
